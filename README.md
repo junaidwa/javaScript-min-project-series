@@ -1,1 +1,0 @@
-# javaScript-min-project-series

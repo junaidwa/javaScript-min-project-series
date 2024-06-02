@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password /Hide and stregth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<div class="container">
+    <h1>Password strength </h1>
+    <br> <br> 
+    <div class="input">
+    <input type="password" placeholder="Password"   class="inp" id="show">
+    <img src="icon.png" id="icon" alt="ICON">
+    <p id="message">Message is <span id="strength"></span></p>
+</div>
+    <br><br>
+    <label class="check" > <pre>Show Password  </pre>
+    <input type="checkbox" onclick="showpass()"> </label>
+<br><br>
+</div>
+<script>
+
+var password=document.getElementById("show");
+var mess=document.getElementById("message");
+var str=document.getElementById("strength");
+
+
+password.addEventListener('input', ()=> {
+    if(password.value.length > 0 ){
+    mess.style.display="block";
+    }
+    else{
+        mess.style.display="none";
+    }
+    if(password.value.length <4){
+        str.innerText="Strong";
+
+    }
+    else if(password.value.length<8){
+        str.innerText="Weak";
+    }
+})
+
+
+
+    let showp=document.getElementById("show");
+    function showpass(){
+        if(showp.type=="password"){
+            showp.type="Text";
+        }
+        else{
+            showp.type="password";
+        }
+    }
+</script>
+</body>
+</html>
