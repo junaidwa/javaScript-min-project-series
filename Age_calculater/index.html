@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculater</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculater">
+            <h1>JavaScript <br> <span>Age Calculater</span></h1>
+            <br>
+            <div class="input-box">
+                <input type="date" class="input" >
+                <button>Generate</button>
+            </div>
+            <p class="result"></p>
+        </div>
+    </div>
+    <script>
+    // document.querySelector('.input').setAttribute('max', new Date().toISOString().split('T')[0]);  
+        
+    document.querySelector('.input').setAttribute('max', new Date().toISOString().split('T')[0]);// To disable the future date in calender
+
+        document.querySelector('button').addEventListener('click', function() {
+            const birthDate = new Date(document.querySelector('.input').value);
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const m = today.getMonth() - birthDate.getMonth();
+            // let day=today.getDay()-birthDate.getDay();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }     // today-birthDate  return milisecond time . its a javascript rule
+            const ageDays = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24)); // convert milisecond into days
+            document.querySelector('.result').textContent = `You are ${age} years old.${m} month old and ${ageDays} day old`;
+            // console.log(age);
+            // console.log(m);
+        });
+
+    </script>
+    
+</body>
+</html>
