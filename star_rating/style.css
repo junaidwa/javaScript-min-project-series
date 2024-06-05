@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(113, 6, 6);
+}
+.rating-box{
+    width: 400px;
+    height: 200px;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #fff;
+}
+.rating-box header{
+    font-size: 20px;
+    text-align: center;
+   
+}
+.rating-box .stars{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    gap: 30px;
+}
+.stars i{
+    font-size: 30px;
+    color: #e6e6e6;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.stars i.active{
+    color: #ff9c1a;
+}
