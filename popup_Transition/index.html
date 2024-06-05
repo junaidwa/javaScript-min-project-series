@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup_Transition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <button type="submit" id="submit" class="submit" onclick="openpop()">Submit</button>
+        <div class="popup" id="popup">
+            <img src="check.png" alt="Tick_image">
+            <h4> Submitted</h4>
+            <p>Your Record has been Submitted Successfully!</p>
+            <button id="close" onclick="closepop()">OK</button>
+        </div>
+    </div>
+    
+     <script>
+        let pop=document.getElementById("popup");
+        function openpop(){
+            pop.classList.add("openbtn");
+        }
+        function closepop(){
+            pop.classList.remove("openbtn");
+        }
+    </script> 
+ 
+    
+</body>
+</html>
