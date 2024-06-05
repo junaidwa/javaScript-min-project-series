@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Password Password</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <div class="form">
+            <H4 class="title">Confirm Password Checker</H4>
+            <div class="field1">
+                <h2>Password</h2><br>
+                 <input type="password" id="pass"  placeholder="Password">
+            </div>
+            <div class="field2">
+                <h2>Confirm Password</h2><br>
+                 <input type="password" id="cpass" placeholder="Confirm Password">
+            </div>
+            <div id="message">
+            </div>
+            <button type="submit" id="Submit" onclick="check()">Submit</button>
+
+        </div>
+    </div>
+    <script>
+        function check(){
+
+       
+        let input1=document.getElementById("pass").value;
+        let input2=document.getElementById("cpass").value;
+        let btn=document.getElementById("Submit");
+        let msg= document.getElementById("message");
+        if(input1.length !=0 && input2.length!=0){
+            if(input1==input2){
+            msg.textContent="Same";
+            }
+            else{
+                // console.log("Not same");
+                msg.textContent="Not same";
+            }
+        }
+        else{
+        alert("Please fill both fields");
+        }
+    }
+     
+    </script>
+</body>
+</html>
