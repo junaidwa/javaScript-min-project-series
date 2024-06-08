@@ -1,0 +1,24 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero{
+    height: 200px;
+    width: 200px;
+    border: 2px solid red;
+    background: blanchedalmond;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+     
+}
+.hero:hover{
+    transform: rotateY(180deg);
+}

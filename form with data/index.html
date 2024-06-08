@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Animatioin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="result">
+        <p class="user">Ussername : <span></span> </p>
+        <p class="gmai">gmail : <span></span></p>
+        <p class="addre">Address : <span></span></p>
+        <p class="pass1">Password : <span></span></p>
+    </div>
+    <div class="container">
+
+   
+    <form>
+        <label for="Username">Username</label>
+        <input type="text" id="username" placeholder="Username"  required>
+        <br>
+        <label for="gmail">Gmail</label>
+        <input type="text"  id="gmail" placeholder="Gmail" required>
+        <br>
+        <label for="address">Address</label>
+        <input type="text"  id="address" placeholder="Address" required>
+        <br>
+        <label for="password">password</label>
+        <input type="password" id="pass" placeholder="Password" required>
+        <br>
+        <button class="btn">Submiited</button>
+    </form>
+</div>
+<script>
+    let form1 =document.querySelector("form");
+    
+    let name= document.querySelector("#username");
+    let usergmail=document.querySelector("#gmail");
+    let useraddress=document.querySelector("#address");
+    let userpass= document.querySelector("#pass");
+    let nameresult=document.querySelector(".user span");
+    let gmailresult=document.querySelector(".gmai span");
+    let addressresult=document.querySelector(".addre span");
+    let passwordresult=document.querySelector(".pass1 span");
+    form1.addEventListener("submit", function(){
+        event.preventDefault();
+      nameresult.textContent=name.value;
+      gmailresult.textContent=usergmail.value;
+      addressresult.textContent=useraddress.value;
+      passwordresult.textContent=userpass.value;
+   
+    }) 
+</script>
+    
+</body>
+</html>
