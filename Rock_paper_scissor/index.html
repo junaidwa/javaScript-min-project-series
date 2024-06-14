@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="title">
+        Rock Paper Scissors
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <img src="image/paper.png" id="paper">
+        </div>
+        <div class="card">
+            <img src="image/rock.png" id="rock">
+        </div>
+        <div class="card">
+            <img src="image/scissors.png" id="scissors">
+        </div>
+    </div>
+  
+    <div class="score_board">
+        <div class="user">
+            <p class="user_score">0</p>
+            <p>User</p>
+        </div>
+        <div class="comp">
+            <p class="comp_score">0</p>
+            <p>Comp</p>
+        </div>
+    </div>
+    <div class="result">
+        <p class="msg">Result</p>
+    </div>
+
+    <script>
+        let userScore = 0;
+        let computerScore = 0;
+        const cards = document.querySelectorAll(".card img");
+        let resultmsg = document.querySelector(".msg");
+        let userresult = document.querySelector(".user_score");
+        let compresult = document.querySelector(".comp_score");
+
+        const compchoicefun = () => {
+            const comparry = ["paper", "rock", "scissors"];
+            const Rindex = Math.floor(Math.random() * 3);
+            return comparry[Rindex];
+        }
+
+        const drawgame = () => {
+            console.log("Game was Draw");
+            resultmsg.textContent = "Draw";
+            resultmsg.style.backgroundColor = "red";
+        }
+
+        const showwinner = (userwin, userchoice, compchoic) => {
+            if (userwin) {
+                userScore++;
+                userresult.textContent = userScore;
+
+                console.log("User wins the game");
+                resultmsg.textContent = `You win and ${userchoice} beats ${compchoic}`;
+                resultmsg.style.backgroundColor = "purple";
+            } else {
+                computerScore++;
+                compresult.textContent = computerScore;
+
+                console.log("User loses the game");
+                resultmsg.textContent = `You lose and ${compchoic} beats ${userchoice}`;
+                resultmsg.style.backgroundColor = "green";
+            }
+        }
+
+        const playgame = (userchoice) => {
+            console.log("User Choice is", userchoice);
+            const compchoic = compchoicefun();
+            console.log("Computer Choice is", compchoic);
+
+            if (userchoice === compchoic) {
+                drawgame();
+            } else {
+                let userwin = true;
+                if (userchoice === "rock") {
+                    userwin = compchoic === "paper" ? false : true;
+                } else if (userchoice === "paper") {
+                    userwin = compchoic === "scissors" ? false : true;
+                } else {
+                    userwin = compchoic === "rock" ? false : true;
+                }
+                showwinner(userwin, userchoice, compchoic);
+            }
+        }
+
+        cards.forEach((card) => {
+            console.log(card);
+            card.addEventListener('click', function () {
+                const userchoice = card.getAttribute("id");
+                playgame(userchoice);
+            });
+        })
+    </script>
+    
+</body>
+</html>
