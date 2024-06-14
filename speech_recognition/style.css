@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    background-color: white;
+    height: 150px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 50px;
+    
+}
+.container .row{
+    border: 2px solid black;
+    position: absolute;
+    padding: 9px;
+    border-radius: 30px;
+}
+.container .row input{
+  width: 350px;
+  padding: 10px;
+  outline: 0;
+  border: 0;
+  font-size:15px;
+}
+.container .row i{
+    font-size: 20px;
+    color: red;
+}

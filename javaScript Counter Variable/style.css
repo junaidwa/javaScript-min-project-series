@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+     box-sizing: border-box;
+}
+#title{
+    text-align: center;
+}
+.controls{
+    background-color: blue;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+    padding: 0 50px;
+}
+.controls .fir,.sec{
+  margin-left: 80px;
+}
+.controls .third,.fourth{
+  margin-left: 145px;
+}

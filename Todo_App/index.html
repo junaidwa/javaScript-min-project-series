@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="todo_app">
+            <h1>Todo App <img src="images/icon.png" alt="Icon with heading"></h1>
+        </div>
+        <div class="row">
+            <input type="text" id="inputb" placeholder="Write your task">
+            <button onclick="addtask()">ADD</button>
+        </div>
+        <ul class="list_container">
+            <!-- <li class="checked">Task #01</li>
+            <li> Task #02</li>
+            <li>Task #03</li> -->
+        </ul>
+    </div>
+
+    <script>
+        let inputbox = document.querySelector("#inputb"); // Use ID selector
+        let listcontainer = document.querySelector(".list_container");
+
+        function addtask() {
+            if (inputbox.value.trim() === "") { // Corrected condition
+                alert("You must enter a value in the input box");
+            } else {
+                let li = document.createElement("li");
+                li.innerHTML = inputbox.value.trim(); // Trim the value
+                listcontainer.appendChild(li);
+            }
+            inputbox.value = "";  
+        }
+    </script>
+</body>
+</html>
