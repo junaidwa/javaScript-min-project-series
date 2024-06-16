@@ -1,0 +1,214 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="search_box">
+        <input
+          type="text"
+          id="input"
+          placeholder="Please write name of Recipe"
+        />
+        <button id="search_btn">search</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <script>
+      let searchbtn = document.querySelector("#search_btn");
+      let result = document.querySelector(".result");
+      let inputbox = document.querySelector("#input");
+   
+
+      let url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+      fetch(url + "burger")
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data);
+          let mymeal = data.meals[0];
+          console.log(mymeal); // All data of Recipe
+          console.log(mymeal.strMeal); // Name of Recipe
+          console.log(mymeal.strArea); // Where from Recipie
+          console.log(mymeal.strMealThumb); // Image of Recipie
+          console.log(mymeal.strInstructions); // Instruction of Recipie
+          let count = 1;
+          let ingredients = [];
+          for (let i in mymeal) {
+            let ingredient = "";
+            let measure = "";
+            if (i.startsWith("strIngredient") && mymeal[i]) {
+              ingredient = mymeal[i];
+              measure = mymeal[`strMeasure` + count];
+              count += 1;
+              // console.log(ingredient,measure);
+              ingredients.push(`${measure} ${ingredient}`);
+            }
+          }
+
+          console.log(ingredients);
+          result.innerHTML = `<img src = ${mymeal.strMealThumb}>
+                    <br>
+                    <br>
+                    <div class="detail">
+                       <h2>
+                         ${mymeal.strMeal}
+                        </h2>
+                       <h2>
+                         ${mymeal.strArea}
+                        </h2>
+                        <br>
+                        </div>   
+                        <div id="ingredient-con">
+
+                            </div> 
+                            <div id="recipe">
+                         <button class="hide">X</button>
+                                <br>
+                        
+                                <p id="instruction">
+                                ${mymeal.strInstructions}
+                                    </p>
+
+                                </div>
+                                <button class="show-recipe">Show Recipe</button>
+                 
+                    `;
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
+     let ingredientcon= document.getElementById("ingredient-con");
+     let parent = document.createElement("ul");
+     let recipebox= document.getElementById("recipe");
+     let hidebtn= document.querySelector(".hide");
+     let showrecipe= document.querySelector(".show-recipe");
+
+  ingredients.forEach((i) => {
+    let child = document.createElement("li");
+    child.innerText=i;
+    parent.appendChild(child);
+    ingredientcon.appendChild(parent);
+    
+  });
+
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="search_box">
+        <input
+          type="text"
+          id="input"
+          placeholder="Please write name of Recipe"
+        />
+        <button id="search_btn">search</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <script>
+      let searchbtn = document.querySelector("#search_btn");
+      let result = document.querySelector(".result");
+      let inputbox = document.querySelector("#input");
+
+      let url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+
+      // Function to fetch and display recipe
+      function fetchRecipe(recipeName) {
+        fetch(url + recipeName)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.meals) {
+              let mymeal = data.meals[0];
+              let ingredients = [];
+              let count = 1;
+              for (let i in mymeal) {
+                if (i.startsWith("strIngredient") && mymeal[i]) {
+                  let ingredient = mymeal[i];
+                  let measure = mymeal[`strMeasure` + count];
+                  count += 1;
+                  ingredients.push(`${measure} ${ingredient}`);
+                }
+              }
+
+              result.innerHTML = `
+                <img src="${mymeal.strMealThumb}" alt="${mymeal.strMeal}">
+                <br>
+                <br>
+                <div class="detail">
+                  <h2>${mymeal.strMeal}</h2>
+                  <h2>${mymeal.strArea}</h2>
+                  <br>
+                </div>
+                <div id="ingredient-con"></div>
+                <div id="recipe">
+                  <button class="hide">X</button>
+                  <br>
+                  <p id="instruction">${mymeal.strInstructions}</p>
+                </div>
+                <button class="show-recipe">Show Recipe</button>
+              `;
+
+              // Appending ingredients to ingredient-con
+              let ingredientcon = document.getElementById("ingredient-con");
+              let parent = document.createElement("ul");
+
+              ingredients.forEach((i) => {
+                let child = document.createElement("li");
+                child.innerText = i;
+                parent.appendChild(child);
+              });
+
+              ingredientcon.appendChild(parent);
+
+              // Event listeners for show/hide recipe
+              let recipebox = document.getElementById("recipe");
+              let hidebtn = document.querySelector(".hide");
+              let showrecipe = document.querySelector(".show-recipe");
+
+              hidebtn.addEventListener("click", () => {
+                recipebox.style.display = "none";
+              });
+
+              showrecipe.addEventListener("click", () => {
+                recipebox.style.display = "block";
+              });
+            } else {
+              result.innerHTML = "<p>Recipe not found. Please try another one.</p>";
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            result.innerHTML = "<p>Error fetching recipe. Please try again later.</p>";
+          });
+      }
+
+      // Initial fetch for default recipe
+      fetchRecipe("burger");
+
+      // Search button event listener
+      searchbtn.addEventListener("click", () => {
+        let recipeName = inputbox.value.trim();
+        if (recipeName) {
+          fetchRecipe(recipeName);
+        }
+      });
+    </script>
+  </body>
+</html>

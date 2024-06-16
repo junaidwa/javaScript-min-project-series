@@ -58,3 +58,12 @@ align-items: center;
     display: none;
     
 }
+.zero{
+    color: red;
+}
+.cross{
+    color: blue;
+}
+/* .disable{
+    
+} */
