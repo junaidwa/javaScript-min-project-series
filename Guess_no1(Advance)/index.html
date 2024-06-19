@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess no 1</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav">
+        <button class="btn_try" id="btn_try">Try Again</button>
+        <h1>Guess between 1 and 20</h1>
+      </div>
+      <div class="title">Guessing Number ...</div>
+      <br />
+      <div class="result_box" id="result_box">?</div>
+      <div class="input_result">
+        <div class="input">
+          <input type="number" id="inp" placeholder="Number" />
+          <button class="btn_check" id="btn_check">Check</button>
+        </div>
+        <div class="result">
+          <h1 class="score">
+            Score : <span class="score_no" id="score_no">20</span>
+          </h1>
+          <br />
+          <h1 class="highest_score">
+            Highesht Score :
+            <span class="highest_score" id="highest_score">0</span>
+          </h1>
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let check = document.getElementById("btn_check");
+      let try1 = document.getElementById("btn_try");
+      let titleinner = document.querySelector(".title");
+      let scoredefault = 20;
+      let highscorebox=0;
+      let min = 1;
+      let max = 20;
+      let ran = Number(Math.floor(Math.random() * (max - min + 1)) + min);
+      let guess = Number(document.getElementById("inp").value);
+      let scoree = document.getElementById("score_no");
+      let Higheshtt = document.getElementById("highest_score");
+      let resultf = document.getElementById("result_box");
+      function resetgame() {
+        scoredefault = 20;
+        scoree.textContent = scoredefault;
+        titleinner.textContent = "Guessing Number ...";
+        resultf.textContent = "?";
+        document.getElementById("inp").value = "";
+        document.querySelector(".container").style.backgroundColor =
+        "white";
+        Higheshtt.textContent=highscorebox;
+      }
+      check.addEventListener("click", () => {
+        let running = true;
+        let guess = Number(document.getElementById("inp").value);
+        scoredefault--;
+        while (running) {
+          if (isNaN(guess)) {
+            titleinner.textContent = ` enter only Number`;
+            scoree.textContent = scoredefault;
+            break;
+          } else if (guess < min || guess > max) {
+            titleinner.textContent = ` guess number b/w limits`;
+            scoree.textContent = scoredefault;
+            break;
+          } else {
+            if (guess < ran) {
+              titleinner.textContent = `Too low! Try Again`;
+              scoree.textContent = scoredefault;
+              break;
+            } else if (guess > ran) {
+              titleinner.textContent = `Too High! Try again`;
+              scoree.textContent = scoredefault;
+              break;
+            } else {
+              titleinner.textContent = `Congratulation!`;
+              scoree.textContent = scoredefault;
+              resultf.textContent = guess;
+              document.querySelector(".container").style.backgroundColor =
+                "green";
+                // Higheshtt.textContent=7;
+
+                if(scoredefault>highscorebox){
+                    highscorebox=scoredefault;
+                    Higheshtt.textContent=highscorebox;
+                }
+                else{
+                    Higheshtt.textContent=highscorebox;
+
+                }
+
+              break;
+              running = false;
+            }
+          }
+        }
+      });
+      try1.addEventListener("click", () => {
+        resetgame();
+      });
+    </script>
+  </body>
+</html>
