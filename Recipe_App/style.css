@@ -22,6 +22,7 @@
     align-items: center;
     margin-bottom: 20px;
     position: relative;
+    height: auto;
 
   }
   .container .search_box {
@@ -29,6 +30,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  
   }
   .search_box input {
     padding: 8px;
@@ -63,6 +65,9 @@
   .result h2{
     text-align: center;
   }
+  .result{
+    /* display: none; */
+  }
   #recipe{
     width: 500px;
     max-width: 700px;
@@ -70,7 +75,7 @@
     background-color: white;
     padding: 30px 40px;
     top: 0;
-    left: 90%;
+    left: 0;
     z-index: 2;
     border-radius: 20px;
     display: none;

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess Number with Alert Box</title>
+  </head>
+  <body>
+    <script>
+      const min = 1;
+      const max = 100;
+      let ran = Math.floor(Math.random() * (max - min + 1)) + min;
+      let attempt = 0;
+      let remaining = 5;
+      let highScore = localStorage.getItem('highScore') ? Number(localStorage.getItem('highScore')) : null;
+
+      function resetGame() {
+        ran = Math.floor(Math.random() * (max - min + 1)) + min; // Reset the random number
+        attempt = 0;
+        remaining = 3;
+      }
+
+      function updateHighScore(newScore) {
+        if (highScore === null || newScore < highScore) {
+          highScore = newScore;
+          localStorage.setItem('highScore', highScore);
+        }
+      }
+
+      let running = true;
+      while (running) {
+        let guess = prompt(`Please enter a number between ${min} and ${max}`);
+        let converted = Number(guess);
+
+        if (isNaN(converted)) {
+          alert("Please enter a valid number.");
+          continue;
+        } else if (converted > max || converted < min) {
+          alert(`Please enter a number between ${min} and ${max}.`);
+          continue;
+        }
+
+        attempt++;
+        remaining--;
+
+        if (remaining < 0) {
+          alert("Sorry! Your attempts are completed and you can't guess the number now.");
+          let pro = prompt("If you want to try again, type '1'");
+          if (pro === '1') {
+            resetGame();
+          } else {
+            running = false;
+          }
+        } else {
+          if (converted < ran) {
+            alert(`Now your attempts are ${attempt} and your remaining attempts are ${remaining}. Too low! Try again.`);
+          } else if (converted > ran) {
+            alert(`Now your attempts are ${attempt} and your remaining attempts are ${remaining}. Too high! Try again.`);
+          } else {
+            alert(`Congratulations! You guessed the number ${ran} in ${attempt} attempts.`);
+            updateHighScore(attempt);
+            alert(`Your current high score is ${highScore}`);
+            let pro = prompt("If you want to try again, type '1'");
+            if (pro === '1') {
+              resetGame();
+            } else {
+              running = false;
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
