@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    
+    background: linear-gradient(45deg, purple, blue, red
+    );
+    transition: all 0.5s linear;
+}
+.container .header{
+    background-color: transparent;
+    width: 450px;
+    height: 200px;
+    margin: 30px;
+    display: flex;
+   
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    transition: all 0.5s linear;
+}
+.pop1{
+    background-color: white;
+    height: 200px;
+    width: 400px; 
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    display: none;
+    transition: all 0.5s linear;
+
+
+}
+.junaid{
+    display: block;
+}
+.active{
+    opacity: 0.5;
+}

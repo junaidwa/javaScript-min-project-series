@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Transiton with blurl background</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button id="show1">Junaid</button>
+            <button id="show2">Shoaib</button>
+            <button id="show3">Shoail</button>
+        </div>
+    </div>
+    <div class="pop1">
+        <h1>Muhammad Junaid</h1>
+        <br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi est mollitia incidunt velit nobis quasi ut, iusto ducimus vel reprehenderit quis dignissimos similique. Quaerat excepturi cumque eum repellendus fuga nesciunt?</p>
+        <button id="close">Close</button>
+    </div>
+
+    <script>
+    let btn1= document.getElementById("show1");
+    let btn2= document.getElementById("show2");
+    let btn3= document.getElementById("show3");
+    let cont= document.querySelector(".container");
+    let onepop= document.querySelector(".pop1");
+    let closebtn= document.querySelector("#close");
+
+    btn1.addEventListener('click',()=>{
+        cont.classList.add("active");
+        onepop.classList.add("junaid");
+       
+        
+    })
+    closebtn.addEventListener('click', ()=>{
+        onepop.classList.remove("junaid");
+        cont.classList.remove("active");
+    })
+
+    </script>
+    
+</body>
+</html>
