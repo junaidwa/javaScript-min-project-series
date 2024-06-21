@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Images</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+      <img src="junaid-pic.jpg" alt="APni pics" id="junaid">
+        </div>
+        <button id="change">Upload Images</button>
+    </div>
+
+    <script>
+        let btn= document.getElementById("change");
+        let image= document.getElementById("junaid");
+        btn.addEventListener('click', ()=>{
+            image.src="unsplash.jpg";
+        })
+    </script>
+    
+</body>
+</html>
