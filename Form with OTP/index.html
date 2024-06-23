@@ -1,0 +1,59 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with OTP Verify</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="email">
+                <h1>Gmail</h1>
+                <input type="text" name="gmail" id="gmail" placeholder="Enter Your Gmail">
+            </div>
+            <div class="gmail-verify">
+                <input type="text" name="OTP" id="OTP" placeholder="Enter OTP">
+                <button class="verify-btn">Verify</button>
+            </div>
+            <button class="btn-gmail" onclick="sendOPT()">Send Gmail</button>
+        </div>
+    </section>
+    <script>
+         function sendOPT(){
+            let gmailvalue= document.querySelector(".email");
+            let otpverify=document.querySelector("#OTP")[0];
+            let otpcode= Math.floor(Math.random() *1000);
+            let emailbody = `<h1> Your OTP IS </h1> ${otpcode}`;
+            Email.send({
+    SecureToken : "83fe9d70-6fbd-4e1a-9f76-2e1468a2e151",
+    To : gmailvalue.value,
+    From : "junaidwattoo33@gmail.co",
+    Subject : "This is the subject",
+    Body : "And this is the body"
+}).then(
+  message => {
+    if(message=="OK"){
+        alert(`Your OTP sent at ${gmailvalue.value}`);
+        let optbtn= document.querySelector(".verify-btn");
+        let otpinp=  document.querySelector("#OTP");
+        optbtn.addEventListener('click', ()=>{
+            if(otpinp.value===otpcode){
+                alert("Congratualtion");
+            }
+            else{
+                alert("Try Again");
+            }
+        })
+    }
+  }
+);
+
+         }
+    </script>
+    
+</body>
+</html> -->
