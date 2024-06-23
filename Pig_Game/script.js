@@ -28,21 +28,21 @@ Rollbtn.addEventListener("click", () => {
   }
 });
 Holdbtn.addEventListener("click", () => {
-  document.getElementById(`score-${activeplayer}`).innerText = currentscore;
+  let totalScore = document.getElementById(`score-${activeplayer}`);
+  totalScore.innerText = Number(totalScore.innerText) + currentscore;
   document.getElementById(`current-${activeplayer}`).innerText = 0;
-
   currentscore = 0;
-  if (document.getElementById(`score-${activeplayer}`) >= 20) {
-    alert(`player-${activeplayer + 1} win the match`);
-    activeplayer = activeplayer === 0 ? 1 : 0;
+
+  if (Number(totalScore.innerText) >= 20) {
+    alert(`Player ${activeplayer + 1} wins the match!`);
     Rollbtn.disabled = true;
     Holdbtn.disabled = true;
   } else {
-    alert(`player-${activeplayer + 1} win the match`);
-    Rollbtn.disabled = true;
-    Holdbtn.disabled = true;
+    // Switch player
+    activeplayer = activeplayer === 0 ? 1 : 0;
   }
 });
+
 
 Newbtn.addEventListener("click", () => {
   Rollbtn.disabled = false;
