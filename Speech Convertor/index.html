@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speech Covertor</title>
+  </head>
+  <body>
+    <div class="main">
+      <input type="text" class="junaid" />
+      <button class="btn">Speech</button>
+    </div>
+
+    <script>
+        
+        let speech = new SpeechSynthesisUtterance();
+        document.querySelector(".btn").addEventListener("click", () => {
+          speech.text = document.querySelector(".junaid").value;
+        // console.log(text);
+        window.speechSynthesis.speak(speech);
+      });
+    </script>
+  </body>
+</html>

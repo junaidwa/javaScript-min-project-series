@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ body{
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .container{
+    height: 450px;
+    width: 300px;
+    border:  2px solid black;
+ }
+ .container form{
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+ }
+ .container form button{
+    width: 50px;
+ }
+ .container form .control_input{
+    margin-top: 20px;
+
+ }
+ .container form .control_input .error{
+    font-size: 15px;
+    color: red;
+ }
